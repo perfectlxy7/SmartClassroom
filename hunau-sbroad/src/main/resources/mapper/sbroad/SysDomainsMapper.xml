@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hunau.sbroad.mapper.SysDomainsMapper">
+
+    <resultMap type="SysDomains" id="SysDomainsResult">
+                    <result property="parentdomainid" column="ParentDomainId"/>
+                    <result property="domainid" column="DomainId"/>
+                    <result property="domainname" column="DomainName"/>
+                    <result property="isuse" column="isuse"/>
+                    </resultMap>
+
+    <sql id="selectSysDomainsVo">
+        select ParentDomainId, DomainId, DomainName, isuse        from sys_domains
+    </sql>
+
+    <select id="selectSysDomainsList" parameterType="SysDomains" resultMap="SysDomainsResult">
+        <include refid="selectSysDomainsVo"/>
+        <where>
+                                                                        <if test="parentdomainid != null ">
+                            and ParentDomainId = #{parentdomainid}
+                        </if>
+                                                                                                                                        <if test="domainname != null  and domainname != ''">
+                            and DomainName like concat('%', #{domainname}, '%')
+                        </if>
+                                                                                                            <if test="isuse != null  and isuse != ''">
+                            and isuse = #{isuse}
+                        </if>
+                                                        </where>
+            </select>
+
+    <select id="selectSysDomainsById" parameterType="Long" resultMap="SysDomainsResult">
+                    <include refid="selectSysDomainsVo"/>
+            where DomainId = #{domainid}
+            </select>
+
+    <insert id="insertSysDomains" parameterType="SysDomains">
+        insert into sys_domains
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                                                <if test="parentdomainid != null ">ParentDomainId,
+                    </if>
+                                                                <if test="domainid != null ">DomainId,
+                    </if>
+                                                                <if test="domainname != null  and domainname != ''">DomainName,
+                    </if>
+                                                                <if test="isuse != null ">isuse,
+                    </if>
+                                    </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                                                <if test="parentdomainid != null ">#{parentdomainid},
+                    </if>
+                                                                <if test="domainid != null ">#{domainid},
+                    </if>
+                                                                <if test="domainname != null  and domainname != ''">#{domainname},
+                    </if>
+                                                                <if test="isuse != null ">#{isuse},
+                    </if>
+                                    </trim>
+    </insert>
+
+    <update id="updateSysDomains" parameterType="SysDomains">
+        update sys_domains
+        <trim prefix="SET" suffixOverrides=",">
+                                                <if test="parentdomainid != null ">ParentDomainId = #{parentdomainid},
+                    </if>
+                                                                                            <if test="domainname != null  and domainname != ''">DomainName = #{domainname},
+                    </if>
+                                                                <if test="isuse != null ">isuse = #{isuse},
+                    </if>
+                                    </trim>
+        where DomainId = #{domainid}
+    </update>
+
+    <delete id="deleteSysDomainsById" parameterType="Long">
+        delete from sys_domains where DomainId = #{domainid}
+    </delete>
+
+    <delete id="deleteSysDomainsByIds" parameterType="String">
+        delete from sys_domains where DomainId in
+        <foreach item="domainid" collection="array" open="(" separator="," close=")">
+            #{domainid}
+        </foreach>
+    </delete>
+
+</mapper>

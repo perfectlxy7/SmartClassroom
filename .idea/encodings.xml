@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hunau-admin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hunau-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hunau-framework" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hunau-generator" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hunau-quartz" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hunau-sbroad" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hunau-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hunau-system" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ruoyi-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ruoyi-system" charset="UTF-8" />
+  </component>
+</project>

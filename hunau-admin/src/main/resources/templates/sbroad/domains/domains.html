@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('domain列表')"/>
+    <th:block th:include="include :: layout-latest-css" />
+    <link th:href="@{/ajax/libs/jquery-layout/jquery.layout-latest.css}" rel="stylesheet"/>
+    <link th:href="@{/ajax/libs/jquery-ztree/3.5/css/metro/zTreeStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/ajax/libs/jquery-layout/jquery.layout-latest.css}" rel="stylesheet"/>
+    <link th:href="@{/ajax/libs/jquery-ztree/3.5/css/metro/zTreeStyle.css}" rel="stylesheet"/>
+</head>
+<body class="gray-bg">
+<div class="container-div">
+    <div class="row">
+        <div class="col-sm-12 search-collapse">
+            <form id="formId">
+                <div class="select-list">
+                    <ul><!--
+                                                                                                                                                                                        <li>
+                                        <label>区域的号码：</label>
+                                        <input type="text" name="parentdomainid"/>
+                                    </li>
+                                              -->
+                        <li class="form-group" style="display: inline-flex">
+                            <select class="form-control noselect2 selectpicker" id="form-group11" style="width: 120px;padding: 0">
+                                <option value="parentdomainid">区域的号码</option>
+                                <option value="domainname">区域的名字：</option>
+                            </select>
+                            <input type="text" name="parentdomainid" id="form-group1" style="width: 100px"/>
+                        </li>
+                                  <!--  <li>
+                                        <label>区域的名字：</label>
+                                        <input type="text" name="domainname"/>
+                                    </li>-->
+                                                                                                                                                                                                                                                                                            <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
+                                    class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i
+                                    class="fa fa-refresh"></i>&nbsp;重置</a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+
+        <div class="btn-group-sm" id="toolbar" role="group">
+            <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="sbroad:domains:add">
+                <i class="fa fa-plus"></i> 添加
+            </a>
+            <a class="btn btn-primary single disabled" onclick="$.operate.edit()"
+               shiro:hasPermission="sbroad:domains:edit">
+                <i class="fa fa-edit"></i> 修改
+            </a>
+            <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()"
+               shiro:hasPermission="sbroad:domains:remove">
+                <i class="fa fa-remove"></i> 删除
+            </a>
+            <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="sbroad:domains:export">
+                <i class="fa fa-download"></i> 导出
+            </a>
+        </div>
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table"></table>
+        </div>
+    </div>
+</div>
+<th:block th:include="include :: footer"/>
+<th:block th:include="include :: layout-latest-js" />
+<script src="/js/plugins/layer/laydate/laydate.js"></script>
+<script src="/js/plugins/layer/layui-v2.4.5/layui/layui.js"></script>
+<script th:inline="javascript">
+    var editFlag = [[${@permission.hasPermi('sbroad:domains:edit')}]];
+    var removeFlag = [[${@permission.hasPermi('sbroad:domains:remove')}]];
+    var prefix = ctx + "sbroad/domains";
+
+    $(function () {
+        var options = {
+            url: prefix + "/list",
+            createUrl: prefix + "/add",
+            updateUrl: prefix + "/edit/{id}",
+            removeUrl: prefix + "/remove",
+            exportUrl: prefix + "/export",
+            modalName: "domain",
+            columns: [{
+                checkbox: true
+            },
+                                                                                                    {
+                            field: 'parentdomainid',
+                            title: '区域的名字'
+                        },
+                                                                                                                        {
+                            field: 'domainid',
+                            title: '区域ID号',
+                            visible: false
+                        },
+                                                                                                                        {
+                            field: 'domainname',
+                            title: '终端的名字'
+                        },
+                                                                                                                        {
+                            field: 'isuse',
+                            title: '是否有效'
+                        },
+                                                    {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function (value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.domainid + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.domainid + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        return actions.join('');
+                    }
+                }]
+        };
+        $.table.init(options);
+    });
+
+    $('#form-group11').on('change', function (e) {
+        $("#form-group1").attr("name",$("#form-group11").val())
+    });
+    $('#form-group22').on('change', function (e) {
+        $("#form-group2").attr("name",$("#form-group22").val())
+    });
+    $('#form-group33').on('select2:select', function (e) {
+        $("#form-group3").attr("name",$("#form-group33").val())
+    });
+    $('#form-group44').on('change', function (e) {
+        $("#form-group4").attr("value",$("#form-group44").val());
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/hunau-admin/hunau-admin.iml" filepath="$PROJECT_DIR$/hunau-admin/hunau-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hunau-common/hunau-common.iml" filepath="$PROJECT_DIR$/hunau-common/hunau-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hunau-framework/hunau-framework.iml" filepath="$PROJECT_DIR$/hunau-framework/hunau-framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hunau-generator/hunau-generator.iml" filepath="$PROJECT_DIR$/hunau-generator/hunau-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hunau-quartz/hunau-quartz.iml" filepath="$PROJECT_DIR$/hunau-quartz/hunau-quartz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hunau-sbroad/hunau-sbroad.iml" filepath="$PROJECT_DIR$/hunau-sbroad/hunau-sbroad.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hunau-service/hunau-service.iml" filepath="$PROJECT_DIR$/hunau-service/hunau-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hunau-system/hunau-system.iml" filepath="$PROJECT_DIR$/hunau-system/hunau-system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/smartclassroom.iml" filepath="$PROJECT_DIR$/.idea/smartclassroom.iml" />
+    </modules>
+  </component>
+</project>

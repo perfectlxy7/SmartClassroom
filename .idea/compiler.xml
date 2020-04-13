@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="hunau-admin" />
+        <module name="hunau-common" />
+        <module name="hunau-framework" />
+        <module name="hunau-generator" />
+        <module name="hunau-quartz" />
+        <module name="hunau-sbroad" />
+        <module name="hunau-service" />
+        <module name="hunau-system" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hunau-admin" target="1.8" />
+      <module name="hunau-common" target="1.8" />
+      <module name="hunau-framework" target="1.8" />
+      <module name="hunau-generator" target="1.8" />
+      <module name="hunau-quartz" target="1.8" />
+      <module name="hunau-sbroad" target="1.8" />
+      <module name="hunau-service" target="1.8" />
+      <module name="hunau-system" target="1.8" />
+      <module name="ruoyi-admin" target="1.8" />
+      <module name="ruoyi-common" target="1.8" />
+      <module name="ruoyi-framework" target="1.8" />
+      <module name="ruoyi-generator" target="1.8" />
+      <module name="ruoyi-quartz" target="1.8" />
+      <module name="ruoyi-service" target="1.8" />
+      <module name="ruoyi-system" target="1.8" />
+      <module name="sbroad" target="1.8" />
+      <module name="smartclassroom" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
